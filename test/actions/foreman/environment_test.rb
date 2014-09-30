@@ -35,6 +35,7 @@ module ::Actions::Foreman::Environment
     end
 
     it 'fails to destroy when there are hosts' do
+      FactoryGirl.create(:host, :environment => @production)
       assert @production.hosts.count > 0
 
       @production.hostgroups = []
@@ -53,7 +54,7 @@ module ::Actions::Foreman::Environment
     end
 
     it 'destroys the environment' do
-      env = ::Environment.create(:name => "subdev")
+      env = FactoryGirl.create(:environment)
       assert plan_action(action, env)
     end
 
