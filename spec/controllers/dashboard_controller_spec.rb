@@ -26,7 +26,6 @@ describe DashboardController do
   end
 
   describe "GET 'index'" do
-    FactoryGirl.create(:host) # Dashboard needs a host or it renders differently
     it "should be successful" do
       @controller.expects(:render)
       get 'index'
